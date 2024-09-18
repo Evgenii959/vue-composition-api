@@ -8,7 +8,6 @@ const page = ref(1);
 const pageSize = 10;
 const searchQuery = ref('');
 const searchTerm = ref('');
-
 const posts = computed(() => store.posts);
 const loading = computed(() => store.loading);
 const hasMorePosts = computed(() => store.totalPosts > page.value * pageSize);
@@ -29,10 +28,6 @@ const newPost = ref({
 
 const fetchPosts = async (pageNumber: number) => {
   await store.fetchPosts(pageNumber, pageSize);
-};
-
-const sortById = () => {
-  store.sortById();
 };
 
 const previousPage = () => {
@@ -108,7 +103,7 @@ const createPost = async () => {
     <table class="min-w-full divide-y divide-gray-200">
       <thead class="bg-gray-50">
         <tr>
-          <th @click="sortById" class="cursor-pointer">ID</th>
+          <th class="cursor-pointer">ID</th>
           <th>Title</th>
           <th>Body</th>
         </tr>
